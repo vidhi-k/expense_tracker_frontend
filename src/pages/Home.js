@@ -1,14 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import "./home.css";
+import { IconButton } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
 function Home(){
     return (
         <Wrapper>
         <Bar>
-            ExpenseTracker
+        <IconButton><MenuIcon sx={{fontSize: 30}} /></IconButton><text className='logo'>Expense</text><text>Track</text>
         </Bar>
         <Button1>Expense History</Button1>
-        <circleButton>+</circleButton>
+        <IconButton><AddCircleOutlinedIcon sx={{fontSize: 100, marginBottom: -100, color: "#7968F8"}} /></IconButton>
+
     </Wrapper>
     );
     
@@ -22,12 +26,19 @@ const Bar= styled.div`
     padding: 5px 0px 6px;
     background-color: #7968F8;
     margin: 0 auto;
+    margin-bottom: 10px;
     text-align: center;
     width: 100%;
     color: #fff;
     font-size: 30px;
     font-family: 'Inter', sans-serif;
     font-weight: 300;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+
 `;
 
 const Wrapper = styled.div`
@@ -35,10 +46,12 @@ const Wrapper = styled.div`
     flex-direction: column;
   justify-content: center;
   align-items: center;
+ 
+  
 `;
 
 const Button1 = styled.button`
-background-color: #7968F8;
+background-color: #EAF1FE;
 color: #303030;
 font-family: 'Inter', sans-serif;
 text-align: center;

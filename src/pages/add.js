@@ -1,11 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
+import { IconButton } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 function AddExp() {
     return (
         <Wrapper>
-    
-        <Bar>Add Expenses</Bar>
+        <Logo>
+            <IconButton><ArrowBackIcon /></IconButton>
+                <text>Add Expense</text>
+            </Logo>
+        
         <Input1 type="number" placeholder='0'></Input1>
         <Input2 type="text" placeholder='Category'></Input2> 
         <Input2 type="date" placeholder='Date'></Input2>
@@ -15,19 +20,6 @@ function AddExp() {
     
 }
 export default AddExp;
-
-const Bar = styled.div`
-    line-height: 2em;
-    padding: 5px 0px 6px;
-    background: #7968F8;
-    margin: 0 auto;
-    text-align: center;
-    width: 100%;
-    color: white;
-    font-size: 30px;
-    font-family: 'Inter', sans-serif;
-    font-weight: 300;
-`;
 
 const Wrapper = styled.div`
     display: flex;
@@ -87,5 +79,22 @@ const Add = styled.button`
     font-size: 30px;
     border-radius: 4px;
     font-weight: 750;
-    position: absolute;
+    ${'' /* position: absolute; */}
+`;
+
+const Logo = styled.div`
+   
+   margin-top: -10px;
+   margin-bottom: 10px;
+   width: 100vw;
+  height: 60px;
+  background-color: #7968F8;
+  padding: 10px; 
+   color: white;
+   font-size: 25px;
+   display: flex;
+  justify-content: center;
+  align-items: left;
+  font-family: 'Inter', sans-serif;
+  
 `;
