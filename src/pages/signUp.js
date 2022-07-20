@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useState } from 'react';
 import "./sign.css";
+import { Outlet, Link } from "react-router-dom";
 
 function SignUp(){
 
@@ -18,7 +19,7 @@ function SignUp(){
             <Input type="text" placeholder='Password'></Input>
             <Input type="text" placeholder='Re-Enter Password'></Input>
 
-            <Login>Sign Up</Login>
+            <Login><Link className='linkMain' to="/signup/home">Sign Up</Link></Login>
             </Wrapper>
         </div>
     );
