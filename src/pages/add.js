@@ -2,12 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import { IconButton } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import {Link} from 'react-router-dom';
 
 function AddExp() {
     return (
         <Wrapper>
         <Logo>
-            <IconButton><ArrowBackIcon /></IconButton>
+            <IconButton component = {Link} to="/home"><ArrowBackIcon /></IconButton>
                 <text>Add Expense</text>
             </Logo>
         

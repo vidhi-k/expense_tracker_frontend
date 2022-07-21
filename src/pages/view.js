@@ -6,22 +6,50 @@ import { IconButton } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import {Link} from 'react-router-dom';
+import {useState} from 'react';
+
+
 
 function View(){
+    const [items, setItems] = useState([{"user_id": 1, "category": "Business", "amount": "1200", "date": "21/07/2022", "time": "2:28PM"}]);
+            
+        // implement the fetch function by week
+        // const fetchItems = () =>{
+        // fetch("https://jsonplaceholder.typicode.com/users")
+        //         .then((res) => res.json())
+        //         .then((json) => setItems(json));
+        //};
+        const fetchItems = () =>{setItems([]);};
     return (
+
         <div>
             <Wrapper>
             <Logo>
-            <IconButton><ArrowBackIcon /></IconButton>
+            <IconButton component = {Link} to="/home"><ArrowBackIcon /></IconButton>
                 <text>Expense History</text>
             </Logo>
             <Wrapper2><NavOne>Weekly</NavOne><NavTwo>Monthly</NavTwo></Wrapper2>
             <Wrapper3>
-            <IconButton><ArrowLeftIcon/></IconButton>
+            <IconButton onClick = {fetchItems}><ArrowLeftIcon/></IconButton>
                 <text>Week</text>
                 <IconButton><ArrowRightIcon/></IconButton>
             </Wrapper3>
-           
+
+            <div className="App">
+              {
+                items.map((item) => ( 
+                <ol key = { item.id } >
+                   <Expense> <b>{ item.category }</b>, &emsp;
+                    { item.amount }, <br />
+                    { item.date }, &emsp;
+                    { item.time} </Expense>
+                    <hr />
+                    </ol>
+                ))
+            }
+    </div>
+
             </Wrapper>
         </div>
     );
@@ -70,6 +98,12 @@ const Logo = styled.div`
   align-items: left;
   font-family: 'Inter', sans-serif;
   
+`;
+
+const Expense = styled.div`
+  height: 45px;
+  background-color: #F5F5F5;
+  color: #372E7B;  
 `;
 
 const Wrapper = styled.div`

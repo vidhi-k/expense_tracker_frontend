@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import "./home.css";
 import { IconButton } from '@mui/material';
+import { Link } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
 function Home(){
@@ -10,8 +11,8 @@ function Home(){
         <Bar>
         <IconButton><MenuIcon sx={{fontSize: 30}} /></IconButton><text className='logo'>Expense</text><text>Track</text>
         </Bar>
-        <Button1>Expense History</Button1>
-        <IconButton><AddCircleOutlinedIcon sx={{fontSize: 100, marginBottom: -100, color: "#7968F8"}} /></IconButton>
+        <Link to="/view"><Button1>Expense History</Button1></Link>
+        <IconButton  component = {Link} to="/add"><AddCircleOutlinedIcon sx={{fontSize: 100, marginBottom: -100, color: "#7968F8"}} /></IconButton>
 
     </Wrapper>
     );
