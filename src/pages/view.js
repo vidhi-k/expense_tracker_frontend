@@ -85,7 +85,7 @@ const NavOne = styled.button`
 
 const Logo = styled.div`
    
-   margin-top: -10px;
+   ${'' /* margin-top: -10px;
    margin-bottom: 0;
    width: 100vw;
   height: 45px;
@@ -96,7 +96,23 @@ const Logo = styled.div`
    display: flex;
   justify-content: center;
   align-items: left;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', sans-serif; */}
+  line-height: 2em;
+    ${'' /* padding: 5px 0px 6px; */}
+    background-color: #7968F8;
+    margin: 0 auto;
+   
+    text-align: center;
+    width: 100%;
+    color: #fff;
+    font-size: 30px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
   
 `;
 

@@ -1,25 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import "./login.css";
 import {Link} from "react-router-dom";
 
 function LoginPage(){
-  
-  // const handleChange = (event) => {
-  //     const name = event.target.name;
-  //     const value = event.target.value;
-      
-  //   }
+ 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
+  function log(){
+    let item = {email, password};
+   fetch("http://localhost:8080/api/v1/auth/login", {
+      method:"POST",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({email, password}),
+    })
+    .then(response => {
+      return response.text();
+    })
+    .then(data => {
+      
+    });
+  }
+
+ 
     return (
-        <div>
+        <div> 
             <Wrapper>
             <Logo>
               <text className='logo'>Expense</text><text>Track</text>
             </Logo>
-            <Input type="text" placeholder='Name'></Input>
-            <Input type="password" placeholder='Password'></Input>
-            <Login><Link className='linkMain' to="/home">Login</Link></Login>
+            <Input type="email" placeholder='Email' onChange={(e) => setEmail(e.target.value)}></Input>
+            <Input type="password" placeholder='Password'  onChange={(e) => setPassword(e.target.value)}></Input>
+            <Login onClick={log}><Link className='linkMain' to="/home">Login</Link></Login>
             <p>Don't have an account <a href='/signup'>Sign Up</a></p>
             </Wrapper>
         </div>

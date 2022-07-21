@@ -5,6 +5,29 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import {Link} from 'react-router-dom';
 
 function AddExp() {
+    
+    const [amount, setAmount] = useState();
+    const [note, setNote] = useState("");
+    const [category, setCategory] = useState("");
+    // const [date, setDate] = useState();
+
+    function addE(){
+        let item = {amount, note, category, user_id};
+       fetch("http://localhost:8080/api/v1/expenses", {
+          method:"POST",
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({amount, note, category, user_id}),
+        })
+        .then(response => {
+          return response.text();
+        })
+        .then(data => {
+         
+        });
+      }
+
     return (
         <Wrapper>
         <Logo>
@@ -12,10 +35,11 @@ function AddExp() {
                 <text>Add Expense</text>
             </Logo>
         
-        <Input1 type="number" placeholder='0'></Input1>
-        <Input2 type="text" placeholder='Category'></Input2> 
-        <Input2 type="date" placeholder='Date'></Input2>
-        <Add>Add</Add>
+        <Input1 type="number" placeholder='0' onChange={(e) => setAmount(e.target.value)}></Input1>
+        <Input2 type="text" placeholder='Note' onChange={(e) => setNote(e.target.value)}></Input2> 
+        <Input2 type="text" placeholder='Category' onChange={(e) => setCategory(e.target.value)}></Input2> 
+        {/* <Input2 type="date" placeholder='Date' onChange={(e) => setDate(e.target.value)}></Input2> */}
+        <Add onClick={addE}>Add</Add>
     </Wrapper>
     );
     
@@ -85,7 +109,7 @@ const Add = styled.button`
 
 const Logo = styled.div`
    
-   margin-top: -10px;
+   ${'' /* margin-top: -10px;
    margin-bottom: 10px;
    width: 100vw;
   height: 60px;
@@ -96,6 +120,22 @@ const Logo = styled.div`
    display: flex;
   justify-content: center;
   align-items: left;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', sans-serif; */}
+  line-height: 2em;
+    ${'' /* padding: 5px 0px 6px; */}
+    background-color: #7968F8;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    text-align: center;
+    width: 100%;
+    color: #fff;
+    font-size: 30px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
   
 `;

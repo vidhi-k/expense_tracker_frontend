@@ -5,6 +5,26 @@ import "./sign.css";
 import { Outlet, Link } from "react-router-dom";
 
 function SignUp(){
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+
+  function signUP(){
+    let item = {email, name, password};
+   fetch("http://localhost:8080/api/v1/auth/signup", {
+      method:"POST",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({email, name, password}),
+    })
+    .then(response => {
+      return response.text();
+    })
+    // .then(data => {
+    //   console.log(data);
+    // });
+  }
 
     
     
@@ -14,12 +34,12 @@ function SignUp(){
             <Logo>
               <text className='logo'>Expense</text><text>Track</text>
             </Logo>
-            <Input type="email" placeholder='Email'></Input>
-            <Input type="text" placeholder='Name'></Input>
-            <Input type="text" placeholder='Password'></Input>
+            <Input type="email" placeholder='Email' onChange={(e) => setEmail(e.target.value)}></Input>
+            <Input type="text" placeholder='Name' onChange={(e) => setName(e.target.value)}></Input>
+            <Input type="text" placeholder='Password' onChange={(e) => setPassword(e.target.value)}></Input>
             <Input type="text" placeholder='Re-Enter Password'></Input>
 
-            <Login><Link className='linkMain' to="/signup/home">Sign Up</Link></Login>
+            <Login onClick={signUP}><Link className='linkMain' to="/signup/home">Sign Up</Link></Login>
             </Wrapper>
         </div>
     );
